@@ -1,0 +1,25 @@
+@import url(https://use.fontawesome.com/releases/v5.0.8/css/all.css);
+
+.divider:after,
+.divider:before {
+content: "";
+flex: 1;
+height: 1px;
+background: #eee;
+}
+.h-custom {
+height: calc(100% - 73px);
+}
+@media (max-width: 450px) {
+.h-custom {
+height: 100%;
+}
+}
+
+.error{
+    padding: 20px;
+    /*background-color: #f44336; /* Red */
+    /*color: white;*/
+    margin-bottom: 15px;
+    margin-left: 740px;
+}

@@ -1,0 +1,35 @@
+<h1>Statement</h1>
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Transaction Id</th>
+                <th>Transaction Type</th>
+                <th>Transfer Type</th>
+                <th>Transaction Amount</th> 
+                <th>Opening Balance</th> 
+                <th>Closing Balance</th> 
+                <th>Transaction Date</th>
+                <th>Transaction Timestamp</th> 
+                <th>Account Id</th>
+                <th>User Id</th>
+                <th>Comments</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let statement of statements">
+                <td>{{statement.transactionId}}</td>
+                <td>{{statement.transactionType}}</td>
+                <td>{{statement.transferType}}</td>
+                <td>{{statement.transactionAmount}}</td>
+                <td>{{statement.openingBalance}}</td>
+                <td>{{statement.closingBalance}}</td>
+                <td>{{statement.transactionDate | date}}</td>
+                <td>{{statement.transactionTimestamp}} </td>
+                <td>{{statement.accountId}}</td>
+                <td>{{statement.userId}}</td>
+                <td>{{statement.comments}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>

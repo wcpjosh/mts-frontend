@@ -1,0 +1,84 @@
+<div class="container box-shadow">
+  <p>
+    Hi {{name}} welcome to Money Transfer System. <br> 
+    You can get your statement 
+    <a routerLink="/statement">here</a>
+  </p>
+</div>
+
+
+
+<div class="container">
+  <!-- Tabs navs -->
+  <ul class="nav nav-tabs mb-3" id="ex1" role="tablist">
+      <li class="nav-item" role="presentation">
+        <a
+          class="nav-link bg-primary"
+          id="ex1-tab-1"
+          data-mdb-toggle="tab"
+          routerLink="/statement"
+          role="tab"
+          aria-controls="ex1-tabs-1"
+          aria-selected="true"
+          >Top 10 Transaction</a
+        >
+      </li>
+      <li class="nav-item" role="presentation">
+        <a
+          class="nav-link bg-primary"
+          id="ex1-tab-2"
+          data-mdb-toggle="tab"
+          routerLink="/statement"
+          role="tab"
+          aria-controls="ex1-tabs-2"
+          aria-selected="false"
+          >Current month Transactions</a
+        >
+      </li>
+      <li class="nav-item" role="presentation">
+        <a
+          class="nav-link bg-primary"
+          id="ex1-tab-2"
+          data-mdb-toggle="tab"
+          routerLink="/statement"
+          role="tab"
+          aria-controls="ex1-tabs-2"
+          aria-selected="false"
+          >Last 1 or 3 month Transactions</a
+        >
+      </li>
+      <li class="nav-item" role="presentation">
+        <a
+          class="nav-link bg-primary"
+          id="ex1-tab-2"
+          data-mdb-toggle="tab"
+          routerLink="/statement"
+          role="tab"
+          aria-controls="ex1-tabs-2"
+          aria-selected="false"
+          >Between date range</a
+        >
+      </li>
+    </ul>
+    <!-- Tabs navs -->
+    
+    <!-- Tabs content -->
+    <div class="tab-content" id="ex1-content">
+      <div
+        class="tab-pane fade show active"
+        id="ex1-tabs-1"
+        role="tabpanel"
+        aria-labelledby="ex1-tab-1"
+      >
+        Top 10 Transactions
+      </div>
+      <div class="tab-pane fade" id="ex1-tabs-2" role="tabpanel" aria-labelledby="ex1-tab-2">
+        Tab 2 content
+      </div>
+      <div class="tab-pane fade" id="ex1-tabs-3" role="tabpanel" aria-labelledby="ex1-tab-3">
+        Tab 3 content
+      </div>
+    </div>
+</div>
+  <!-- Tabs content -->
+

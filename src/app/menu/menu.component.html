@@ -1,0 +1,18 @@
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+        <div> <a href="www.khanrf.com" class="navbar-brand">MTS</a>
+            <!--<img width="197" height="46" class="img-responsive" src="assets/images/mts-logo.png">-->
+        </div>
+
+        <ul class="navbar-nav">
+            <li><a *ngIf="authenticateDataService.isUserLoggedIn()" routerLink="/welcome/{{username}}" class="nav-link">Home</a></li>
+            <li><a *ngIf="authenticateDataService.isUserLoggedIn()" routerLink="/statement" class="nav-link">Statement</a></li>
+        </ul>
+
+        <ul class="navbar-nav navbar-collapse justify-content-end">
+            <li><a *ngIf="!authenticateDataService.isUserLoggedIn()" routerLink="/login" class="nav-link">Login</a></li>
+            <li><a *ngIf="authenticateDataService.isUserLoggedIn()" routerLink="/logout" class="nav-link">Logout</a></li>
+        </ul>
+
+    </nav>
+</header>
