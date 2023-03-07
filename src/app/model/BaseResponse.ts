@@ -6,9 +6,6 @@ import { Injectable } from '@angular/core';
 
 export class BaseResponse {
 
-    // emailAddress: string = '';
-    // token: string = '';
-
     data: any;
     errorCode: number = 0;
     errorMessage: string = '';
@@ -16,6 +13,6 @@ export class BaseResponse {
     status: number = 0;
 
 
-    constructor() {}
+    constructor() { }
 
 }

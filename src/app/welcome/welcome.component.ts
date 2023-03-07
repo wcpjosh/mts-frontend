@@ -1,8 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
-import { UserDto } from '../model/UserDto';
-import { UserDataService } from '../service/data/user-data.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-welcome',
@@ -12,25 +9,27 @@ import { UserDataService } from '../service/data/user-data.service';
 
 export class WelcomeComponent implements OnInit {
 
-  
   name = '';
+  statementComponent: any;
+  showDiv: boolean = false;
+  showDiv2: boolean = false;
+  fromDate: string = '';
+  toDate: string = '';
 
   // Activated Route
   constructor(private route: ActivatedRoute,
-    private userDataService: UserDataService) {
-    // this.name = userDataService.getUserByEmail
+    private router: Router) {
+
   }
 
   ngOnInit(): void {
     this.name = this.route.snapshot.params['name'];
   }
 
-  // ngOnInit() {
-  //   this.userDataService.getUserByEmail().subscribe(userDto => {
-  //     this.userDto = userDto;
-  //     this.name = userDto.username;
-  //     console.log('from ngOn init User retrieved:', this.userDto);
-  //   });
-  // }
 
+  routeIt() {
+    const toDate = this.toDate;
+    const fromDate = this.fromDate;
+    this.router.navigate(['/statement'], { queryParams: { toDate, fromDate } });
+  }
 }

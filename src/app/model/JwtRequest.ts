@@ -5,11 +5,11 @@ import { Injectable } from '@angular/core';
 })
 
 export class JwtRequest {
-       
-    emailAddress: string ='';
-    password: string ='';
+
+  emailAddress: string = '';
+  password: string = '';
 
 
-    constructor() { }
+  constructor() { }
 
 }

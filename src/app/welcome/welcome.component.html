@@ -1,7 +1,7 @@
 <div class="container box-shadow">
   <p>
-    Hi {{name}} welcome to Money Transfer System. <br> 
-    You can get your statement 
+    Hi {{name}} welcome to Money Transfer System. <br>
+    You can get your statement
     <a routerLink="/statement">here</a>
   </p>
 </div>
@@ -11,74 +11,72 @@
 <div class="container">
   <!-- Tabs navs -->
   <ul class="nav nav-tabs mb-3" id="ex1" role="tablist">
-      <li class="nav-item" role="presentation">
-        <a
-          class="nav-link bg-primary"
-          id="ex1-tab-1"
-          data-mdb-toggle="tab"
-          routerLink="/statement"
-          role="tab"
-          aria-controls="ex1-tabs-1"
-          aria-selected="true"
-          >Top 10 Transaction</a
-        >
-      </li>
-      <li class="nav-item" role="presentation">
-        <a
-          class="nav-link bg-primary"
-          id="ex1-tab-2"
-          data-mdb-toggle="tab"
-          routerLink="/statement"
-          role="tab"
-          aria-controls="ex1-tabs-2"
-          aria-selected="false"
-          >Current month Transactions</a
-        >
-      </li>
-      <li class="nav-item" role="presentation">
-        <a
-          class="nav-link bg-primary"
-          id="ex1-tab-2"
-          data-mdb-toggle="tab"
-          routerLink="/statement"
-          role="tab"
-          aria-controls="ex1-tabs-2"
-          aria-selected="false"
-          >Last 1 or 3 month Transactions</a
-        >
-      </li>
-      <li class="nav-item" role="presentation">
-        <a
-          class="nav-link bg-primary"
-          id="ex1-tab-2"
-          data-mdb-toggle="tab"
-          routerLink="/statement"
-          role="tab"
-          aria-controls="ex1-tabs-2"
-          aria-selected="false"
-          >Between date range</a
-        >
-      </li>
-    </ul>
-    <!-- Tabs navs -->
-    
-    <!-- Tabs content -->
-    <div class="tab-content" id="ex1-content">
-      <div
-        class="tab-pane fade show active"
-        id="ex1-tabs-1"
-        role="tabpanel"
-        aria-labelledby="ex1-tab-1"
-      >
-        Top 10 Transactions
-      </div>
-      <div class="tab-pane fade" id="ex1-tabs-2" role="tabpanel" aria-labelledby="ex1-tab-2">
-        Tab 2 content
-      </div>
-      <div class="tab-pane fade" id="ex1-tabs-3" role="tabpanel" aria-labelledby="ex1-tab-3">
-        Tab 3 content
-      </div>
-    </div>
-</div>
-  <!-- Tabs content -->
+    <li class="nav-item" role="presentation">
+      <a class="nav-link bg-primary" id="ex1-tab-1" data-mdb-toggle="tab" routerLink="/statement/top10" role="tab"
+        aria-controls="ex1-tabs-1" aria-selected="true">Top 10 Transaction</a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a (click)="statementComponent.getCurrentMonthTransaction()" class="nav-link bg-primary" id="ex1-tab-2"
+        data-mdb-toggle="tab" routerLink="/statement/curr" role="tab" aria-controls="ex1-tabs-2"
+        aria-selected="false">Current month Transactions</a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a (click)="showDiv = !showDiv" class="nav-link bg-primary" id="ex1-tab-3" data-mdb-toggle="tab" role="tab"
+        aria-controls="ex1-tabs-3" aria-selected="false" style="color: white;">Last 1 or 3 month Transactions</a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a (click)="showDiv2 = !showDiv2" class="nav-link bg-primary" id="ex1-tab-4" data-mdb-toggle="tab" role="tab"
+        aria-controls="ex1-tabs-4" aria-selected="false" style="color: white;">Between date range</a>
+    </li>
 
+    <li class="nav-item" role="presentation">
+      <a routerLink="/transaction" class="nav-link bg-primary" id="ex1-tab-4" data-mdb-toggle="tab" role="tab"
+        aria-controls="ex1-tabs-4" aria-selected="false" style="color: white;">Send Money</a>
+    </li>
+
+  </ul>
+  <!-- Tabs navs -->
+
+  <!-- Tabs content -->
+  <div class="tab-content" id="ex1-content">
+    <div class="tab-pane fade show active" id="ex1-tabs-1" role="tabpanel" aria-labelledby="ex1-tab-1">
+
+    </div>
+    <div class="tab-pane fade" id="ex1-tabs-2" role="tabpanel" aria-labelledby="ex1-tab-2">
+      Tab 2 content
+    </div>
+    <div [hidden]="!showDiv">
+      <a class="nav-link bg-primary" id="ex1-tab-3" data-mdb-toggle="tab" role="tab" aria-controls="ex1-tabs-3"
+        aria-selected="false" style="color: white; width: 17%;" routerLink="/statement/1">Last 1 month Transactions</a>
+      <br>
+      <a class="nav-link bg-primary" id="ex1-tab-3" data-mdb-toggle="tab" role="tab" aria-controls="ex1-tabs-3"
+        aria-selected="false" style="color: white; width: 17%;" routerLink="/statement/3">Last 3 month Transactions</a>
+    </div>
+
+    <div class="container " [hidden]="!showDiv2" style="padding-left: 3px;">
+     
+      <div class="input-group mb-3 border border-primary" style="width: 415px;">
+        <input type="text" class="form-control" placeholder="To Date" aria-label="To Date"
+          aria-describedby="basic-addon2" name="toDate" [(ngModel)]="toDate" >
+        <div class="input-group-append">
+          <span class="input-group-text border border-primary" id="basic-addon2"
+            style="background-color: #007bff;; color: white;">MM-dd-yyyy</span>
+        </div>
+      </div>
+
+      <div class="input-group mb-3 border border-primary" style="width: 415px;" >
+        <input type="text" class="form-control" placeholder="From Date" aria-label="From Date"
+          aria-describedby="basic-addon2"  name="fromDate" [(ngModel)]="fromDate">
+        <div class="input-group-append">
+          <span class="input-group-text border border-primary" id="basic-addon2"
+            style="background-color: #007bff;; color: white;">MM-dd-yyyy</span>
+        </div>
+      </div>
+
+      <button (click)="routeIt()" class="btn btn-primary">Get Now</button>
+      
+    </div>
+
+  </div>
+</div>
+<!-- Tabs content -->

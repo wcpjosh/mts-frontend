@@ -1,23 +1,34 @@
-<h1>Statement</h1>
 <div class="container">
-    <table class="table">
+    <h2>Statement</h2>
+    <div>
+        <button (click)="generatePDF()" class="btn btn-primary export"
+            style="padding-left: 2.5rem; padding-right: 2.5rem; margin-right: 55px">Export Pdf</button>
+
+        <button (click)="exportToExcel()" class="btn btn-primary export"
+            style="padding-left: 2.5rem; padding-right: 2.5rem;">Export Excel</button>
+    </div>
+</div>
+
+<br>
+<div class="container">
+    <table id="statement-table" class="table">
         <thead>
             <tr>
                 <th>Transaction Id</th>
                 <th>Transaction Type</th>
                 <th>Transfer Type</th>
-                <th>Transaction Amount</th> 
-                <th>Opening Balance</th> 
-                <th>Closing Balance</th> 
+                <th>Transaction Amount</th>
+                <th>Opening Balance</th>
+                <th>Closing Balance</th>
                 <th>Transaction Date</th>
-                <th>Transaction Timestamp</th> 
-                <th>Account Id</th>
-                <th>User Id</th>
+                <th>Transaction Timestamp</th>
+                <th>Account Number</th>
+                <!-- <th>User Id</th> -->
                 <th>Comments</th>
             </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let statement of statements">
+            <tr *ngFor="let statement of statements">
                 <td>{{statement.transactionId}}</td>
                 <td>{{statement.transactionType}}</td>
                 <td>{{statement.transferType}}</td>
@@ -26,10 +37,10 @@
                 <td>{{statement.closingBalance}}</td>
                 <td>{{statement.transactionDate | date}}</td>
                 <td>{{statement.transactionTimestamp}} </td>
-                <td>{{statement.accountId}}</td>
-                <td>{{statement.userId}}</td>
+                <td>{{statement.accountNumber}}</td>
+                <!-- <td>{{statement.userId}}</td> -->
                 <td>{{statement.comments}}</td>
-        </tr>
+            </tr>
         </tbody>
     </table>
 </div>

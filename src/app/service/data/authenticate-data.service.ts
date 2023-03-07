@@ -34,7 +34,7 @@ export class AuthenticateDataService {
         if (response.status === 200) {
           sessionStorage.setItem('authenticatedUser', jwtResponse.data.token);
           sessionStorage.setItem('emailAddress', jwtResponse.data.emailAddress);
-        }else{
+        } else {
           this.removeSessionStorage();
         }
         return jwtResponse;
@@ -83,13 +83,13 @@ export class AuthenticateDataService {
 
   logout() {
     console.log('before logout called..' + this.jwtResponse.data);
-  this.removeSessionStorage();
+    this.removeSessionStorage();
     this.jwtResponse == null;
     console.log('logout called..' + this.jwtResponse);
   }
 
 
-  removeSessionStorage(){
+  removeSessionStorage() {
     sessionStorage.removeItem('authenticatedUser');
     sessionStorage.removeItem('emailAddress');
     sessionStorage.removeItem('username');

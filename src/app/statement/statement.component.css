@@ -1,0 +1,21 @@
+/* #statement-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 10pt;
+    margin-bottom: 20px;
+  }
+  
+  #statement-table th, #statement-table td {
+    width: 9%;
+    padding: 5px;
+    border: 1px solid #000;
+    text-align: center;
+  }
+  
+  #statement-table th {
+    background-color: #eee;
+  } */
+
+.export {
+  padding-left: 13%
+}

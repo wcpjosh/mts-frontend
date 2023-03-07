@@ -15,8 +15,6 @@ export class UserDataService {
 
   constructor(private http: HttpClient) {
     this.userDTO = new UserDto();
-
-    //  const url = `${baseUrl}users/user?email=${sessionStorage.getItem('emailAddress')}`
   }
 
 
@@ -24,7 +22,6 @@ export class UserDataService {
     this.authorizationToken = 'Bearer ' + sessionStorage.getItem('authenticatedUser');
     const url = `${baseUrl}users/user?email=${sessionStorage.getItem('emailAddress')}`;
     const headers = new HttpHeaders({ 'Authorization': this.authorizationToken });
-
     console.log('URL=> ' + url);
     console.log('headers=> ' + headers.get('Authorization'));
     return this.http.get<BaseResponse>(url, { headers: headers });
