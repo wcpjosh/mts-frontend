@@ -1,36 +1,39 @@
 <div class="container">
     <h2> Send Money</h2>
 </div>
-
+<div class="alert alert-danger alrt" *ngIf='errorDiv'>{{errorMessage}}</div>
+<div class="alert alert-success alrt" *ngIf='sucessDiv'>{{sucessMessage}}</div>
 <div class="container" style="padding-right: 566px;">
-    <form>
+    <form [formGroup]="transactionForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
-            <label for="exampleInputEmail1">Transfer To</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                placeholder="Enter To Account Number">
+            <label for="toAccount">Transfer To</label>
+            <input type="text" class="form-control" id="toAccount" aria-describedby="emailHelp"
+                placeholder="Enter To Account Number" formControlName="transferTo">
         </div>
         <div class="form-group">
-            <label for="exampleInputPassword1">Amount</label>
-            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Enter Amount">
+            <label for="amount">Amount</label>
+            <input type="text" class="form-control" id="amount" placeholder="Enter Amount" formControlName="amount">
         </div>
         <div class="form-group">
-            <label for="exampleInputPassword1">Remark</label>
-            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Remark">
+            <label for="remark">Remark</label>
+            <input type="text" class="form-control" id="remark" placeholder="Remark" formControlName="remark">
         </div>
         <div class="form-group">
-            <label for="exampleInputPassword1">Transfer Type</label>
-            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Transfer Type">
+            <label for="transferType">Transfer Type</label>
+            <input type="text" class="form-control" id="transferType" placeholder="Transfer Type"
+                formControlName="transferType">
         </div>
         <label for="from">From</label>
 
         <div class="input-group mb-3" *ngFor="let account of accounts">
-            <input type="text" class="form-control" id="from"
-              aria-describedby="basic-addon2" name="acccountNumber" value="{{account.accountNumber}}"  disabled readonly>
+            <input type="text" class="form-control" id="fromAccount" aria-describedby="basic-addon2"
+                name="accountNumber" value="{{account.accountNumber}}" readonly>
             <div class="input-group-append">
-              <span class="input-group-text border border-primary" id="basic-addon2"
-                style="background-color: #007bff;; color: white;"  >Available balance : ₹{{account.availableBalance}}</span>
+                <span class="input-group-text border border-primary" id="basic-addon2"
+                    style="background-color: #007bff;; color: white;">Available balance :
+                    ₹{{account.availableBalance}}</span>
             </div>
-          </div>
+        </div>
 
         <button type="submit" class="btn btn-primary">Send Now</button>
     </form>

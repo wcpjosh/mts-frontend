@@ -42,7 +42,6 @@ export class AuthenticateDataService {
       catchError(error => {
         console.error("gettoken error " + error);
         this.removeSessionStorage();
-        // throw an error instead of returning null
         return throwError(() => error);
       })
     );

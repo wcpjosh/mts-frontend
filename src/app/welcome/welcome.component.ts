@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -24,8 +24,8 @@ export class WelcomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.name = this.route.snapshot.params['name'];
+    console.log("Name is welcome : " + this.name);
   }
-
 
   routeIt() {
     const toDate = this.toDate;

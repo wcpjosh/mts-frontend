@@ -12,6 +12,7 @@ export class MenuComponent implements OnInit {
 
   // isUserLoggedIn: boolean = false;
   username: string = 'arif';
+  title: string = 'Money Transfer System';
 
   constructor(public authenticateDataService: AuthenticateDataService) {
     this.username = String();
