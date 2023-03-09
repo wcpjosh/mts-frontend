@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticateDataService } from '../service/data/authenticate-data.service';
 import { UserDataService } from '../service/data/user-data.service';
-import { HardcodedAuthenticationService } from '../service/hardcoded-authentication.service';
 
 @Component({
   selector: 'app-menu',
@@ -18,6 +17,13 @@ export class MenuComponent implements OnInit {
     this.username = String();
   }
   ngOnInit(): void {
+    if (sessionStorage.getItem("username")) {
+      const usernameFromSessionStorage = sessionStorage.getItem("username");
+      this.username = usernameFromSessionStorage !== null ? usernameFromSessionStorage : "";
+    }
+  }
+
+  routeOnHomeClick(){
     if (sessionStorage.getItem("username")) {
       const usernameFromSessionStorage = sessionStorage.getItem("username");
       this.username = usernameFromSessionStorage !== null ? usernameFromSessionStorage : "";
