@@ -261,7 +261,8 @@
         <h1>{{errorCode}}</h1>
         <h2>{{lostMsg}}</h2>
         <p>{{errorMsg}}</p>
-        <button class="btn btn-primary" routerLink="/welcome/{{username}}">HOME</button>
+        <button *ngIf="authenticateDataService.isUserLoggedIn()" class="btn btn-primary" routerLink="/welcome/{{username}}">HOME</button>
+        <button *ngIf="!authenticateDataService.isUserLoggedIn()" class="btn btn-primary" routerLink="/login">Login</button>
       </div>
     </div>
   </div>

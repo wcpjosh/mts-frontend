@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticateDataService } from '../service/data/authenticate-data.service';
 
 @Component({
   selector: 'app-error',
@@ -14,7 +15,8 @@ export class ErrorComponent implements OnInit {
 
   username: string = "arif";
 
-
+  constructor(public authenticateDataService: AuthenticateDataService) {
+  }
 
   ngOnInit(): void {
     if (sessionStorage.getItem("username")) {

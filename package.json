@@ -23,6 +23,7 @@
     "html-to-xlsx": "^2.2.3",
     "html2canvas": "^1.4.1",
     "jspdf": "^2.5.1",
+    "materialize-css": "^1.0.0-rc.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "xlsx": "^0.18.5",
