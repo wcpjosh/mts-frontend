@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent {
-
+  footerText = 'Download MTS App to Transfer Money from anywhere';
 }

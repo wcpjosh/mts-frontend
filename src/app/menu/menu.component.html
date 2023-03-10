@@ -8,7 +8,7 @@
         <div>
             <ul class="navbar-nav">
                 <li><a *ngIf="authenticateDataService.isUserLoggedIn()" routerLink="/welcome/{{username}}"
-                        class="nav-link glyphicon glyphicon-home" (click)="routeOnHomeClick()">Home</a></li>
+                        class="nav-link" (click)="routeOnHomeClick()">Home</a></li>
                 <li><a *ngIf="authenticateDataService.isUserLoggedIn()" routerLink="/statement"
                         class="nav-link">Statement</a></li>
             </ul>
