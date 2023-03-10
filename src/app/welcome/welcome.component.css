@@ -15,4 +15,17 @@
     font-size: smaller;
     border: solid 2px;
   }
+
+  .actv{
+    height: 48px;
+    color: white;
+    width: 300px;
+    margin-left: 909px;
+    border: solid;
+  }
+
+  .name{
+    margin-right: 588px;
+    border: solid;
+  }
   

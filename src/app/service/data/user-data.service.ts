@@ -16,7 +16,7 @@ export class UserDataService {
   constructor(private http: HttpClient) {
     this.userDTO = new UserDto();
   }
-
+  
 
   getUserByEmail(): Observable<BaseResponse> {
     this.authorizationToken = 'Bearer ' + sessionStorage.getItem('authenticatedUser');

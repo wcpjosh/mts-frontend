@@ -1,9 +1,11 @@
 <div class="container box-shadow">
-  <p>
-    Hi {{name}} welcome to Money Transfer System. <br>
-    You can get your statement
-    <a routerLink="/statement">here</a>
-  </p>
+  <div>
+    <p>
+      Hi {{name}} welcome to Money Transfer System. <br>
+      You can get your statement
+      <a routerLink="/statement">here</a>
+    </p>
+  </div>
 </div>
 
 
@@ -32,6 +34,12 @@
     <li class="nav-item" role="presentation">
       <a routerLink="/transaction" class="nav-link bg-primary" id="ex1-tab-4" data-mdb-toggle="tab" role="tab"
         aria-controls="ex1-tabs-4" aria-selected="false" style="color: white;">Send Money</a>
+    </li>
+
+    <li class="nav-item" role="presentation">
+      <a class="nav-link bg-primary" style="color: white;">
+        Last Login: {{lastActivityDate | date}} , {{lastActivityDate | date:'shortTime'}}
+      </a>
     </li>
 
   </ul>

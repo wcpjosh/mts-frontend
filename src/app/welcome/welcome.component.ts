@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BaseResponse } from '../model/BaseResponse';
+import { AccountService } from '../service/data/account.service';
 import { StatementService } from '../service/data/statement.service';
 
 @Component({
@@ -18,13 +19,16 @@ export class WelcomeComponent implements OnInit {
   showTranc: boolean = true;
   fromDate: string = '';
   toDate: string = '';
+  lastActivityDate = '2022-02-22T14:05:33.594+00:00';
+  //eventLog: EventLog;
 
   statements: any[];
 
   // Activated Route
   constructor(private route: ActivatedRoute,
     private router: Router,
-    private statementService: StatementService) {
+    private statementService: StatementService,
+    private accoutService: AccountService) {
     this.statements = [];
 
     this.getTop10Transactions();
@@ -37,6 +41,7 @@ export class WelcomeComponent implements OnInit {
       const usernameFromSessionStorage = sessionStorage.getItem("username");
       this.name = usernameFromSessionStorage !== null ? usernameFromSessionStorage : "";
     }
+    this.getLastLoginActvity();
   }
 
   routeIt() {
@@ -72,6 +77,18 @@ export class WelcomeComponent implements OnInit {
       if (response.errorCode === 401) {
         console.log("401 unauthorized token expired");
       }
+    });
+  }
+
+
+
+  /**
+* This method is created to last LoginActivity
+*/
+  getLastLoginActvity() {
+    console.log("getLastLoginActvity");
+    this.accoutService.lastLoginActivty().subscribe((response: BaseResponse) => {
+      this.lastActivityDate = response.data.activityTimeStamp;
     });
   }
 }

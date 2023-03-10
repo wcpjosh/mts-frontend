@@ -34,6 +34,22 @@ export class AccountService {
     );
   }
 
+
+  lastLoginActivty(): Observable<BaseResponse> {
+    this.userDTO = this.userDataService.getLoginUser();
+    console.log(this.userDTO.userId);
+    alert("this.userDTO.userId "+this.userDTO.userId);
+    console.log(this.userDTO.username);
+    console.log('AccountService lastLoginActivty called..');
+    const token = sessionStorage.getItem('authenticatedUser');
+    const headers = { Authorization: `Bearer ${token}` };
+    return this.http.get<BaseResponse>(`${baseUrl}event/` + this.userDTO.userId, { headers }).pipe(
+      catchError((error: any) => {
+        console.error('Error getting accounts:', error);
+        return throwError(() => new Error('account error'));
+      })
+    );
+  }
 }
 
 
