@@ -20,7 +20,6 @@ export class WelcomeComponent implements OnInit {
   fromDate: string = '';
   toDate: string = '';
   lastActivityDate = '2022-02-22T14:05:33.594+00:00';
-  //eventLog: EventLog;
 
   statements: any[];
 
@@ -30,13 +29,11 @@ export class WelcomeComponent implements OnInit {
     private statementService: StatementService,
     private accoutService: AccountService) {
     this.statements = [];
-
     this.getTop10Transactions();
   }
 
   ngOnInit(): void {
     this.name = this.route.snapshot.params['name'];
-    console.log("Name is welcome : " + this.name);
     if (sessionStorage.getItem("username")) {
       const usernameFromSessionStorage = sessionStorage.getItem("username");
       this.name = usernameFromSessionStorage !== null ? usernameFromSessionStorage : "";
@@ -69,7 +66,6 @@ export class WelcomeComponent implements OnInit {
     this.statementService.getTop10Transactions().subscribe((response: BaseResponse) => {
       if (response.data !== null) {
         this.statements = response.data;
-        console.log("statement component ts ngOnInit " + response.data);
       }
       if (response.errorCode === 404) {
         console.log("404 not found");
@@ -86,7 +82,6 @@ export class WelcomeComponent implements OnInit {
 * This method is created to last LoginActivity
 */
   getLastLoginActvity() {
-    console.log("getLastLoginActvity");
     this.accoutService.lastLoginActivty().subscribe((response: BaseResponse) => {
       this.lastActivityDate = response.data.activityTimeStamp;
     });

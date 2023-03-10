@@ -19,7 +19,6 @@ export class AuthenticateDataService {
   }
 
   getToken(jwtRequest: JwtRequest): Observable<BaseResponse> {
-    console.log('AuthenticateDataService getToken called..');
     return this.http.post<BaseResponse>(`${baseUrl}authenticate`, jwtRequest).pipe(
       map((response: any) => {
         const jwtResponse = new BaseResponse();
@@ -29,8 +28,6 @@ export class AuthenticateDataService {
         jwtResponse.message = response.message;
         jwtResponse.status = response.status;
         this.jwtResponse = jwtResponse;
-        console.log("gettoken sucess " + this.jwtResponse);
-
         if (response.status === 200) {
           sessionStorage.setItem('authenticatedUser', jwtResponse.data.token);
           sessionStorage.setItem('emailAddress', jwtResponse.data.emailAddress);
@@ -40,7 +37,6 @@ export class AuthenticateDataService {
         return jwtResponse;
       }),
       catchError(error => {
-        console.error("gettoken error " + error);
         this.removeSessionStorage();
         return throwError(() => error);
       })
@@ -55,12 +51,10 @@ export class AuthenticateDataService {
     return this.getToken(jwtRequest).pipe(
       map((jwtResponse: any) => {
         if (jwtResponse.data != null && jwtResponse.status === 200) {
-          console.log("if block " + jwtResponse.data);
           sessionStorage.setItem('authenticatedUser', jwtResponse.data.token);
           sessionStorage.setItem('emailAddress', jwtResponse.data.emailAddress);
           return true;
         } else if (jwtResponse.status === 401) {
-          console.log("Unauthorized access");
           this.removeSessionStorage();
           return false;
         } else {
@@ -81,10 +75,8 @@ export class AuthenticateDataService {
   }
 
   logout() {
-    console.log('before logout called..' + this.jwtResponse.data);
     this.removeSessionStorage();
     this.jwtResponse == null;
-    console.log('logout called..' + this.jwtResponse);
   }
 
 

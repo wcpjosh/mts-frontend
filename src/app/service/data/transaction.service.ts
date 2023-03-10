@@ -14,7 +14,6 @@ export class TransactionService {
 
 
   debit(transactionDTO: TransactionDto): Observable<BaseResponse> {
-    console.log('TransactionService debit called..');
     const token = sessionStorage.getItem('authenticatedUser');
     const headers = { Authorization: `Bearer ${token}` };
     return this.http.post<BaseResponse>(`${baseUrl}transaction/debit`, transactionDTO, { headers });

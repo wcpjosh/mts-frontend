@@ -24,7 +24,6 @@ export class LoginComponent implements OnDestroy {
 
   invalidLogin: boolean = false;
   errorMessage: string = "Username or password is not valid, Please try again.."
-  // public jwtResponse: JwtResponse = new JwtResponse;
 
   // Router instane is required to send request from login to welcome
   constructor(private router: Router,
@@ -36,7 +35,6 @@ export class LoginComponent implements OnDestroy {
   }
 
   ngOnDestroy(): void {
-    console.log('Method not implemented.');
     this.getTokenSubscription.unsubscribe();
   }
 
@@ -49,7 +47,6 @@ export class LoginComponent implements OnDestroy {
     this.getTokenSubscription = this.authenticateDataService.authenticate(this.jwtRequest).
       pipe(
         catchError(error => {
-          console.log('Authentication failed with error:', error);
           this.invalidLogin = true;
           return of(false);
         })
@@ -68,8 +65,6 @@ export class LoginComponent implements OnDestroy {
   getUserByEmailId() {
     this.userDataService.getUserByEmail().subscribe((jwtResponse: BaseResponse) => {
       this.userDto = jwtResponse.data;
-      console.log('LoginComponent getUserByEmailId', this.userDto);
-      console.log('LoginComponent getUserByEmailId jwtResponse', jwtResponse);
       if (jwtResponse.status === 200) {
         this.userDataService.setUsername(this.userDto.username);
         this.userDataService.setLoginUser(this.userDto);

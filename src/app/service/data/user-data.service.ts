@@ -16,36 +16,30 @@ export class UserDataService {
   constructor(private http: HttpClient) {
     this.userDTO = new UserDto();
   }
-  
+
 
   getUserByEmail(): Observable<BaseResponse> {
     this.authorizationToken = 'Bearer ' + sessionStorage.getItem('authenticatedUser');
     const url = `${baseUrl}users/user?email=${sessionStorage.getItem('emailAddress')}`;
     const headers = new HttpHeaders({ 'Authorization': this.authorizationToken });
-    console.log('URL=> ' + url);
-    console.log('headers=> ' + headers.get('Authorization'));
     return this.http.get<BaseResponse>(url, { headers: headers });
   }
 
 
   setUsername(name: string) {
     this.username = name;
-    console.log("setUsername " + this.username);
     sessionStorage.setItem('username', this.username);
   }
 
   getUsername() {
-    console.log("setUsername " + this.username);
     return this.username;
   }
 
   setLoginUser(userDTO: UserDto) {
     this.userDTO = userDTO;
-    console.log("user data service: setLoginUser " + this.userDTO.userId);
   }
 
   getLoginUser() {
-    alert(this.userDTO.userId);
     return this.userDTO;
   }
 

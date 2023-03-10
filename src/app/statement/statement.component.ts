@@ -63,12 +63,9 @@ export class StatementComponent implements OnInit {
 
     this.toDate = this.route.snapshot.queryParams['toDate'];
     this.fromDate = this.route.snapshot.queryParams['fromDate']
-    alert(this.toDate);
-    alert(this.fromDate);
     if (this.toDate != '' && this.fromDate != '') {
       this.getTransactionsBetweenDates(this.toDate, this.fromDate);
     }
-
   }
 
   /**
@@ -78,7 +75,6 @@ export class StatementComponent implements OnInit {
     this.statementService.getTop10Transactions().subscribe((response: BaseResponse) => {
       if (response.data !== null) {
         this.statements = response.data;
-        console.log("statement component ts ngOnInit " + response.data);
       }
       if (response.errorCode === 404) {
         console.log("404 not found");
@@ -94,13 +90,9 @@ export class StatementComponent implements OnInit {
    */
   getCurrentMonthTransaction() {
     this.statements = [];
-    console.log("getCurrentMonthTransaction" + this.statements);
-    alert("statement component getCurrentMonthTransaction called")
     this.statementService.getMonthTransaction().subscribe((response: BaseResponse) => {
-      console.log("statement component getCurrentMonthTransaction => " + response.data);
       if (response.data !== null) {
         this.statements = response.data;
-        console.log("statement component ts ngOnInit " + response.data);
       }
       if (response.errorCode === 404) {
         console.log("404 not found");
@@ -117,10 +109,7 @@ export class StatementComponent implements OnInit {
    */
   getLastMonthTransaction(lastM: string) {
     this.statements = [];
-    console.log("getCurrentMonthTransaction" + this.statements);
-    alert("statement component getCurrentMonthTransaction called")
     this.statementService.getLastMonthTransactions(lastM).subscribe((response: BaseResponse) => {
-      console.log("statement component getCurrentMonthTransaction => " + response.data);
       if (response.data !== null) {
         this.statements = response.data;
         console.log("statement component ts ngOnInit " + response.data);
@@ -142,13 +131,9 @@ export class StatementComponent implements OnInit {
    */
   getTransactionsBetweenDates(toDate: string, fromDate: string) {
     this.statements = [];
-    console.log("getCurrentMonthTransaction" + this.statements);
-    alert("statement component getCurrentMonthTransaction called")
     this.statementService.getTransactionsBetweenDates(toDate, fromDate).subscribe((response: BaseResponse) => {
-      console.log("statement component getCurrentMonthTransaction => " + response.data);
       if (response.data !== null) {
         this.statements = response.data;
-        console.log("statement component ts ngOnInit " + response.data);
       }
       if (response.errorCode === 404) {
         console.log("404 not found");
@@ -174,8 +159,6 @@ export class StatementComponent implements OnInit {
         const imgProps = doc.getImageProperties(imgData);
         const pdfWidth = doc.internal.pageSize.getWidth();
         const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-
-
         doc.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
         // Save the PDF
         doc.save('table.pdf');

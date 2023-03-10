@@ -15,20 +15,15 @@ export class StatementService {
   constructor(private http: HttpClient,
     private userDataService: UserDataService) {
     this.userDTO = new UserDto();
-    console.log("from statementService component " + this.userDTO);
   }
 
 
   getTop10Transactions(): Observable<BaseResponse> {
     this.userDTO = this.userDataService.getLoginUser();
-    console.log(this.userDTO.userId);
-    console.log(this.userDTO.username);
-    console.log('StatementService getTop10Transactions called..');
     const token = sessionStorage.getItem('authenticatedUser');
     const headers = { Authorization: `Bearer ${token}` };
     return this.http.get<BaseResponse>(`${baseUrl}statement/top10/` + this.userDTO.userId, { headers }).pipe(
       catchError((error: any) => {
-        console.error('Error getting transactions:', error);
         return throwError(() => new Error('test'));
       })
     );
@@ -37,14 +32,10 @@ export class StatementService {
 
   getMonthTransaction(): Observable<BaseResponse> {
     this.userDTO = this.userDataService.getLoginUser();
-    console.log(this.userDTO.userId);
-    console.log(this.userDTO.username);
-    console.log('StatementService getMonthTransaction called..');
     const token = sessionStorage.getItem('authenticatedUser');
     const headers = { Authorization: `Bearer ${token}` };
     return this.http.get<BaseResponse>(`${baseUrl}statement/month/` + this.userDTO.userId + "?date=" + this.getTodaysDate(), { headers }).pipe(
       catchError((error: any) => {
-        console.error('Error getting transactions:', error);
         return throwError(() => new Error('error in getMonthTransaction'));
       })
     );
@@ -63,14 +54,10 @@ export class StatementService {
 
   getLastMonthTransactions(lastM: string): Observable<BaseResponse> {
     this.userDTO = this.userDataService.getLoginUser();
-    console.log(this.userDTO.userId);
-    console.log(this.userDTO.username);
-    console.log('StatementService getMonthTransaction called..');
     const token = sessionStorage.getItem('authenticatedUser');
     const headers = { Authorization: `Bearer ${token}` };
     return this.http.get<BaseResponse>(`${baseUrl}statement/last/` + this.userDTO.userId + "?lastMonth=" + lastM, { headers }).pipe(
       catchError((error: any) => {
-        console.error('Error getting transactions:', error);
         return throwError(() => new Error('error in getMonthTransaction'));
       })
     );
@@ -79,14 +66,10 @@ export class StatementService {
 
   getTransactionsBetweenDates(toDate: string, fromDate: string): Observable<BaseResponse> {
     this.userDTO = this.userDataService.getLoginUser();
-    console.log(this.userDTO.userId);
-    console.log(this.userDTO.username);
-    console.log('StatementService getMonthTransaction called..');
     const token = sessionStorage.getItem('authenticatedUser');
     const headers = { Authorization: `Bearer ${token}` };
     return this.http.get<BaseResponse>(`${baseUrl}statement/between/` + this.userDTO.userId + "?toDate=" + toDate + "&fromDate=" + fromDate, { headers }).pipe(
       catchError((error: any) => {
-        console.error('Error getting getTransactionsBetweenDates:', error);
         return throwError(() => new Error('error in getTransactionsBetweenDates'));
       })
     );

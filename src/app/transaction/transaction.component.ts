@@ -60,7 +60,6 @@ export class TransactionComponent implements OnInit {
     this.accountService.getAccountsByUser().subscribe((response: BaseResponse) => {
       if (response.data !== null) {
         this.accounts = response.data;
-        console.log("TransactionComponenet getAccountsByUser " + response.data);
       }
       if (response.errorCode === 404) {
         console.log("404 not found");
@@ -73,17 +72,14 @@ export class TransactionComponent implements OnInit {
 
 
   onSubmit() {
-    console.log(this.transactionForm.value);
     for (let i = 0; i < this.accounts.length; i++) {
       this.transactionDTO.fromAccountNumber = this.accounts[i].accountNumber;
-      alert(this.transactionDTO.fromAccountNumber);
     }
     this.transactionDTO.toAccountNumber = this.transactionForm.value.transferTo;
     this.transactionDTO.transactionAmount = this.transactionForm.value.amount;
     this.transactionDTO.transactionType = this.transactionForm.value.transferType;
     this.transactionDTO.comments = this.transactionForm.value.remark;
 
-    console.log(this.transactionDTO);
     this.doDebit(this.transactionDTO);
   }
 
@@ -94,7 +90,7 @@ export class TransactionComponent implements OnInit {
         this.sucessDiv = true;
         this.errorDiv = false;
       }
-      else if(jwtResponse.status === 404) {
+      else if (jwtResponse.status === 404) {
         this.sucessDiv = false;
         this.errorDiv = true;
       }
