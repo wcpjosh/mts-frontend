@@ -4,6 +4,7 @@ import { UserDataService } from '../service/data/user-data.service';
 import { AccountService } from '../service/data/account.service';
 import { BaseResponse } from '../model/BaseResponse';
 import { EventLog } from '../model/EventLog';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -17,7 +18,8 @@ export class MenuComponent implements OnInit {
 
 
   constructor(public authenticateDataService: AuthenticateDataService,
-    public accountService: AccountService) {
+    public accountService: AccountService,
+    private router: Router) {
     this.username = String();
   }
 
@@ -33,7 +35,10 @@ export class MenuComponent implements OnInit {
     if (sessionStorage.getItem("username")) {
       const usernameFromSessionStorage = sessionStorage.getItem("username");
       this.username = usernameFromSessionStorage !== null ? usernameFromSessionStorage : "";
+      alert(this.username);
+      return this.username;
     }
+    return '';
   }
 
 }
