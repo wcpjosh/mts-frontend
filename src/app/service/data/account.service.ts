@@ -5,7 +5,7 @@ import { UserDataService } from './user-data.service';
 import { catchError, Observable, throwError } from 'rxjs';
 import { BaseResponse } from 'src/app/model/BaseResponse';
 import { UserDto } from 'src/app/model/UserDto';
-import { baseUrl } from 'src/environments/environment';
+import { baseUrl, baseUrlTransferService } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +23,7 @@ export class AccountService {
     this.userDTO = this.userDataService.getLoginUser();
     const token = sessionStorage.getItem('authenticatedUser');
     const headers = { Authorization: `Bearer ${token}` };
-    return this.http.get<BaseResponse>(`${baseUrl}accounts/user/` + this.userDTO.userId, { headers }).pipe(
+    return this.http.get<BaseResponse>(`${baseUrlTransferService}accounts/user/` + this.userDTO.userId, { headers }).pipe(
       catchError((error: any) => {
         return throwError(() => new Error('account error'));
       })
@@ -35,7 +35,7 @@ export class AccountService {
     this.userDTO = this.userDataService.getLoginUser();
     const token = sessionStorage.getItem('authenticatedUser');
     const headers = { Authorization: `Bearer ${token}` };
-    return this.http.get<BaseResponse>(`${baseUrl}event/` + this.userDTO.userId, { headers }).pipe(
+    return this.http.get<BaseResponse>(`${baseUrlTransferService}event/` + this.userDTO.userId, { headers }).pipe(
       catchError((error: any) => {
         return throwError(() => new Error('account error'));
       })

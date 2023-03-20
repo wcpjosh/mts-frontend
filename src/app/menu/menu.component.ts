@@ -18,7 +18,6 @@ export class MenuComponent implements OnInit {
 
   constructor(public authenticateDataService: AuthenticateDataService,
     public accountService: AccountService) {
-    this.username = String();
   }
 
   ngOnInit(): void {
@@ -33,7 +32,10 @@ export class MenuComponent implements OnInit {
     if (sessionStorage.getItem("username")) {
       const usernameFromSessionStorage = sessionStorage.getItem("username");
       this.username = usernameFromSessionStorage !== null ? usernameFromSessionStorage : "";
+      alert(this.username);
+      return this.username;
     }
+    return '';
   }
 
 }

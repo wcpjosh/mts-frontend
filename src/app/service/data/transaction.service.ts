@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http'
 import { BaseResponse } from 'src/app/model/BaseResponse';
 import { catchError, Observable, throwError } from 'rxjs';
 import { TransactionDto } from 'src/app/model/TransactionDto';
-import { baseUrl } from 'src/environments/environment';
+import { baseUrl, baseUrlTransferService } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +16,7 @@ export class TransactionService {
   debit(transactionDTO: TransactionDto): Observable<BaseResponse> {
     const token = sessionStorage.getItem('authenticatedUser');
     const headers = { Authorization: `Bearer ${token}` };
-    return this.http.post<BaseResponse>(`${baseUrl}transaction/debit`, transactionDTO, { headers });
+    return this.http.post<BaseResponse>(`${baseUrlTransferService}transaction/debit`, transactionDTO, { headers });
   }
 
 }

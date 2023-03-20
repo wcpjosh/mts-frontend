@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http'
 import { JwtRequest } from 'src/app/model/JwtRequest';
 import { BaseResponse } from 'src/app/model/BaseResponse';
-import { baseUrl } from 'src/environments/environment';
+import { baseUrl, baseUrlUserService } from 'src/environments/environment';
 import { catchError, map } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
 
@@ -19,7 +19,7 @@ export class AuthenticateDataService {
   }
 
   getToken(jwtRequest: JwtRequest): Observable<BaseResponse> {
-    return this.http.post<BaseResponse>(`${baseUrl}authenticate`, jwtRequest).pipe(
+    return this.http.post<BaseResponse>(`${baseUrlUserService}signIn`, jwtRequest).pipe(
       map((response: any) => {
         const jwtResponse = new BaseResponse();
         jwtResponse.data = response.data;

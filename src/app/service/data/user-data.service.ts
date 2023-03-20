@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Observable } from 'rxjs';
-import { baseUrl } from 'src/environments/environment';
+import { baseUrl, baseUrlTransferService } from 'src/environments/environment';
 import { BaseResponse } from 'src/app/model/BaseResponse';
 import { UserDto } from 'src/app/model/UserDto';
 
@@ -20,7 +20,7 @@ export class UserDataService {
 
   getUserByEmail(): Observable<BaseResponse> {
     this.authorizationToken = 'Bearer ' + sessionStorage.getItem('authenticatedUser');
-    const url = `${baseUrl}users/user?email=${sessionStorage.getItem('emailAddress')}`;
+    const url = `${baseUrlTransferService}users/user?email=${sessionStorage.getItem('emailAddress')}`;
     const headers = new HttpHeaders({ 'Authorization': this.authorizationToken });
     return this.http.get<BaseResponse>(url, { headers: headers });
   }

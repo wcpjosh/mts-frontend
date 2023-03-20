@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
 import { BaseResponse } from 'src/app/model/BaseResponse';
 import { UserDto } from 'src/app/model/UserDto';
-import { baseUrl } from 'src/environments/environment';
+import { baseUrl, baseUrlStatementService } from 'src/environments/environment';
 import { UserDataService } from './user-data.service';
 
 @Injectable({
@@ -22,7 +22,7 @@ export class StatementService {
     this.userDTO = this.userDataService.getLoginUser();
     const token = sessionStorage.getItem('authenticatedUser');
     const headers = { Authorization: `Bearer ${token}` };
-    return this.http.get<BaseResponse>(`${baseUrl}statement/top10/` + this.userDTO.userId, { headers }).pipe(
+    return this.http.get<BaseResponse>(`${baseUrlStatementService}statement/top10/` + this.userDTO.userId, { headers }).pipe(
       catchError((error: any) => {
         return throwError(() => new Error('test'));
       })
@@ -34,7 +34,7 @@ export class StatementService {
     this.userDTO = this.userDataService.getLoginUser();
     const token = sessionStorage.getItem('authenticatedUser');
     const headers = { Authorization: `Bearer ${token}` };
-    return this.http.get<BaseResponse>(`${baseUrl}statement/month/` + this.userDTO.userId + "?date=" + this.getTodaysDate(), { headers }).pipe(
+    return this.http.get<BaseResponse>(`${baseUrlStatementService}statement/month/` + this.userDTO.userId + "?date=" + this.getTodaysDate(), { headers }).pipe(
       catchError((error: any) => {
         return throwError(() => new Error('error in getMonthTransaction'));
       })
@@ -56,7 +56,7 @@ export class StatementService {
     this.userDTO = this.userDataService.getLoginUser();
     const token = sessionStorage.getItem('authenticatedUser');
     const headers = { Authorization: `Bearer ${token}` };
-    return this.http.get<BaseResponse>(`${baseUrl}statement/last/` + this.userDTO.userId + "?lastMonth=" + lastM, { headers }).pipe(
+    return this.http.get<BaseResponse>(`${baseUrlStatementService}statement/last/` + this.userDTO.userId + "?lastMonth=" + lastM, { headers }).pipe(
       catchError((error: any) => {
         return throwError(() => new Error('error in getMonthTransaction'));
       })
@@ -68,7 +68,7 @@ export class StatementService {
     this.userDTO = this.userDataService.getLoginUser();
     const token = sessionStorage.getItem('authenticatedUser');
     const headers = { Authorization: `Bearer ${token}` };
-    return this.http.get<BaseResponse>(`${baseUrl}statement/between/` + this.userDTO.userId + "?toDate=" + toDate + "&fromDate=" + fromDate, { headers }).pipe(
+    return this.http.get<BaseResponse>(`${baseUrlStatementService}statement/between/` + this.userDTO.userId + "?toDate=" + toDate + "&fromDate=" + fromDate, { headers }).pipe(
       catchError((error: any) => {
         return throwError(() => new Error('error in getTransactionsBetweenDates'));
       })
