@@ -20,7 +20,6 @@ export class MenuComponent implements OnInit {
   constructor(public authenticateDataService: AuthenticateDataService,
     public accountService: AccountService,
     private router: Router) {
-    this.username = String();
   }
 
   ngOnInit(): void {
